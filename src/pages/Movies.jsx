@@ -7,8 +7,8 @@ import { MoviesSearchList } from 'components/MoviesSearchList/MoviesSearchList '
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [setIsLoading] = useState(false);
-  const [setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') ?? '';
 
@@ -25,7 +25,7 @@ export const Movies = () => {
       })
       .catch(error => setError(error.message))
       .finally(() => setIsLoading(false));
-  }, [search, setIsLoading, setError]);
+  }, [search]);
 
   return (
     <main>

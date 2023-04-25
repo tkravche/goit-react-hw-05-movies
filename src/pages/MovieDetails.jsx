@@ -4,8 +4,8 @@ import { fetchMovieById } from 'services/moviesAPI';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
-  const [setIsLoading] = useState(false);
-  const [setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const MovieDetails = () => {
       .then(({ data }) => setMovie(data))
       .catch(error => setError(error.message))
       .finally(() => setIsLoading(false));
-  }, [movieId, setIsLoading, setError]);
+  }, [movieId]);
   const navigate = useNavigate();
   return !movie ? (
     ''

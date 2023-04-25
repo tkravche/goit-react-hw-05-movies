@@ -5,8 +5,8 @@ import { fetchTrendingMovies } from '../services/moviesAPI';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [setIsLoading] = useState(false);
-  const [setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -16,7 +16,7 @@ export const Home = () => {
       })
       .catch(error => setError(error.message))
       .finally(() => setIsLoading(false));
-  }, [setIsLoading, setError]);
+  }, []);
 
   return (
     <main>
