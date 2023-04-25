@@ -32,11 +32,11 @@ export const MovieDetails = () => {
         <p>User Score: </p>
         <p>Overview: {movie.overview}</p>
         <p>Genres:</p>
-        {movie.genres.map(genre => (
-          <ul key={genre.id}>
-            <li>{genre.name}</li>
-          </ul>
-        ))}
+        <ul>
+          {movie.genres.map(genre => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </ul>
         <p>Additional information: </p>
         <Link to={`cast`}>Cast </Link>
         <Link to={`reviews`}>Reviews </Link>
