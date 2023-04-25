@@ -1,6 +1,7 @@
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieById } from 'services/moviesAPI';
+import { MovieDetailsItem } from '../components/MovieDetailsItem/MovieDetailsItem';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -20,28 +21,21 @@ export const MovieDetails = () => {
     ''
   ) : (
     <main>
-      <button onClick={() => navigate(-1)}>Go back</button>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-        width="240"
-        height="340"
-      />
-      <div>
-        <h2>{movie.title}</h2>
-        <p>User Score: </p>
-        <p>Overview: {movie.overview}</p>
-        <p>Genres:</p>
-        <ul>
-          {movie.genres.map(genre => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </ul>
-        <p>Additional information: </p>
-        <Link to={`cast`}>Cast </Link>
-        <Link to={`reviews`}>Reviews </Link>
+      <section>
+        <button onClick={() => navigate(-1)}> &#8592;Go back</button>
+        <MovieDetailsItem movie={movie} />
+      </section>
+
+      <section>
+        <p>Additional information </p>
+        <Link to={`cast`}>
+          <h4>Cast</h4>{' '}
+        </Link>
+        <Link to={`reviews`}>
+          <h4>Reviews</h4>{' '}
+        </Link>
         <Outlet />
-      </div>
+      </section>
     </main>
   );
 };

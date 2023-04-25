@@ -1,13 +1,12 @@
 import { Wrapper, Input } from './SearchBox.styled';
 
-export const SearchBox = ({ value, onChange }) => {
+export const SearchBox = ({ value, OnHandleSubmit }) => {
   return (
     <Wrapper>
-      <Input
-        type="text"
-        value={value}
-        onChange={e => onChange(e.target.value)}
-      />
+      <form onSubmit={OnHandleSubmit}>
+        <Input type="text" name="search" />
+        <button type="submit">Search</button>
+      </form>
     </Wrapper>
   );
 };

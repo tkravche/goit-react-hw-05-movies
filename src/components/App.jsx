@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Home } from 'pages/Home';
-import { Movies } from 'pages/Movies';
-import { NotFound } from 'pages/NotFound';
+import { Home } from 'pages/HomePage';
+import { Movies } from 'pages/MoviesPage';
+import { NotFound } from 'pages/NotFoundPage';
 import { Container, Header, Link } from './App.styled';
-import { MovieDetails } from 'pages/MovieDetails';
+import { MovieDetails } from 'pages/MovieDetailsPage';
 import { Cast } from '../components/Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
 

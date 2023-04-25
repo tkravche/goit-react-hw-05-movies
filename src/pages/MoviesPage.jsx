@@ -12,9 +12,16 @@ export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') ?? '';
 
-  const updateQueryString = search => {
-    const nextParams = search !== '' ? { search } : {};
-    setSearchParams(nextParams);
+  // const updateQueryString = search => {
+  //   const nextParams = search !== '' ? { search } : {};
+  //   setSearchParams(nextParams);
+  // };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setSearchParams({ search: form.elements.search.value });
+    form.reset();
   };
 
   useEffect(() => {
@@ -29,7 +36,7 @@ export const Movies = () => {
 
   return (
     <main>
-      <SearchBox value={search} onChange={updateQueryString} />
+      <SearchBox value={search} OnHandleSubmit={handleSubmit} />
       <MoviesSearchList moviesSearch={movies} />
     </main>
   );
