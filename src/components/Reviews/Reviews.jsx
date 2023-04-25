@@ -18,17 +18,20 @@ export const Reviews = () => {
       .finally(() => setIsLoading(false));
   }, [movieId]);
 
-  console.log(reviews);
   return (
     <section>
-      <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <p>{review.author}</p>
-            <p>{review.content} </p>
-          </li>
-        ))}
-      </ul>
+      {reviews.length > 0 ? (
+        <ul>
+          {reviews.map(review => (
+            <li key={review.id}>
+              <p>{review.author}</p>
+              <p>{review.content} </p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>We do not have any reviews for this movie</p>
+      )}
     </section>
   );
 };

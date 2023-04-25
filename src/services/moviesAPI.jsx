@@ -29,7 +29,13 @@ export const fetchMovieReviews = id => {
   );
 };
 
+export const fetchMovieByQuery = search => {
+  return axios(
+    `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=${API_KEY}&page=1`
+  );
+};
 // https://api.themoviedb.org/3/trending/movie/day?api_key=612624e4ceb53e70d9f6450958bf781b
 //https://api.themoviedb.org/3/movie/868759?api_key=612624e4ceb53e70d9f6450958bf781b
 //https://api.themoviedb.org/3/movie/868759/credits?api_key=612624e4ceb53e70d9f6450958bf781b
 //https://api.themoviedb.org/3/movie/868759/reviews?api_key=612624e4ceb53e70d9f6450958bf781b
+//https://api.themoviedb.org/3/search/movie?query=batman&api_key=612624e4ceb53e70d9f6450958bf781b&page=1
