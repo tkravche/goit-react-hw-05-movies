@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 
 import { fetchMovieByQuery } from 'services/moviesAPI';
 import { SearchBox } from 'components/Searchbox/SearchBox';
@@ -11,16 +11,12 @@ export const Movies = () => {
   const [error, setError] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') ?? '';
-
-  // const updateQueryString = search => {
-  //   const nextParams = search !== '' ? { search } : {};
-  //   setSearchParams(nextParams);
-  // };
-
+  const location = useLocation();
+  console.log(location);
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    setSearchParams({ search: form.elements.search.value });
+    setSearchParams({ search: form.elements.search.value.trim() });
     form.reset();
   };
 
@@ -37,7 +33,7 @@ export const Movies = () => {
   return (
     <main>
       <SearchBox value={search} OnHandleSubmit={handleSubmit} />
-      <MoviesSearchList moviesSearch={movies} />
+      <MoviesSearchList location={location} moviesSearch={movies} />
     </main>
   );
 };

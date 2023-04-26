@@ -1,4 +1,4 @@
-import { StyledContainer } from './MoviesDetailItem.styled';
+import { StyledContainer } from './MoviesDetailsItem.styled';
 
 export const MovieDetailsItem = ({ movie }) => {
   return (
