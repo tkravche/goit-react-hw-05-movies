@@ -9,19 +9,16 @@ import { useState, useEffect } from 'react';
 import { fetchMovieById } from 'services/moviesAPI';
 import { MovieDetailsItem } from '../components/MovieDetailsItem/MovieDetailsItem';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(location);
+
   useEffect(() => {
-    setIsLoading(true);
     fetchMovieById(movieId)
       .then(({ data }) => setMovie(data))
-      .catch(error => setError(error.message))
-      .finally(() => setIsLoading(false));
+      .catch(error => setError(error.message));
   }, [movieId]);
   const navigate = useNavigate();
   return !movie ? (
@@ -55,3 +52,5 @@ export const MovieDetails = () => {
     </main>
   );
 };
+
+export default MovieDetails;

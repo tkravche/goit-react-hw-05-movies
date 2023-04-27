@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { StyledContainer } from './MoviesDetailsItem.styled';
 
 export const MovieDetailsItem = ({ movie }) => {
@@ -10,8 +12,10 @@ export const MovieDetailsItem = ({ movie }) => {
         height="340"
       />
       <div>
-        <h2>{movie.title}</h2>
-        <p>User Score: {movie.vote_average.toFixed(1)} </p>
+        <h2>
+          {movie.title} ({movie.release_date.slice(0, 4)})
+        </h2>
+        <p>User Score: {Number(movie.vote_average.toFixed(1)) * 10}% </p>
         <h3>Overview </h3>
         <p>{movie.overview}</p>
         <h3>Genres</h3>
@@ -21,4 +25,17 @@ export const MovieDetailsItem = ({ movie }) => {
       </div>
     </StyledContainer>
   );
+};
+
+MovieDetailsItem.propTypes = {
+  moviesSearch: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      vote_average: PropTypes.number.isRequired,
+      overview: PropTypes.string.isRequired,
+      genres: PropTypes.array.isRequired,
+    })
+  ),
 };

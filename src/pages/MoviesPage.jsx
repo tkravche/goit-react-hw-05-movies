@@ -5,14 +5,14 @@ import { fetchMovieByQuery } from 'services/moviesAPI';
 import { SearchBox } from 'components/Searchbox/SearchBox';
 import { MoviesSearchList } from 'components/MoviesSearchList/MoviesSearchList ';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+
   const [error, setError] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') ?? '';
   const location = useLocation();
-  console.log(location);
+
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -21,13 +21,13 @@ export const Movies = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
+    if (search === '') return;
+
     fetchMovieByQuery(search)
       .then(({ data: { results } }) => {
         setMovies(results);
       })
-      .catch(error => setError(error.message))
-      .finally(() => setIsLoading(false));
+      .catch(error => setError(error.message));
   }, [search]);
 
   return (
@@ -37,3 +37,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

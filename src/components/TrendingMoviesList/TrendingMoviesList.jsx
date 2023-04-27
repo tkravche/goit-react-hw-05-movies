@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const TrendingMoviesList = ({ location, trendingMovies }) => {
   return (
@@ -14,4 +15,14 @@ export const TrendingMoviesList = ({ location, trendingMovies }) => {
       </ul>
     </div>
   );
+};
+
+TrendingMoviesList.propTypes = {
+  trendingMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+  location: PropTypes.object.isRequired,
 };

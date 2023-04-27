@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { Wrapper, Input } from './SearchBox.styled';
 
-export const SearchBox = ({ value, OnHandleSubmit }) => {
+export const SearchBox = ({ OnHandleSubmit }) => {
   return (
     <Wrapper>
       <form onSubmit={OnHandleSubmit}>
@@ -9,4 +10,8 @@ export const SearchBox = ({ value, OnHandleSubmit }) => {
       </form>
     </Wrapper>
   );
+};
+
+SearchBox.propTypes = {
+  OnHandleSubmit: PropTypes.func.isRequired,
 };
