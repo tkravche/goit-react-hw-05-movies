@@ -3,7 +3,7 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 
 import { fetchMovieByQuery } from 'services/moviesAPI';
 import { SearchBox } from 'components/Searchbox/SearchBox';
-import { MoviesSearchList } from 'components/MoviesSearchList/MoviesSearchList ';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -32,8 +32,8 @@ const Movies = () => {
 
   return (
     <main>
-      <SearchBox value={search} OnHandleSubmit={handleSubmit} />
-      <MoviesSearchList location={location} moviesSearch={movies} />
+      <SearchBox OnHandleSubmit={handleSubmit} />
+      <MoviesList location={location} movies={movies} />
     </main>
   );
 };

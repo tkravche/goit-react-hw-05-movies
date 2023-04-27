@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export const TrendingMoviesList = ({ location, trendingMovies }) => {
+export const MoviesList = ({ location, movies }) => {
   return (
     <div>
       <ul>
-        {trendingMovies.map(movie => (
+        {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`movies/${movie.id}`} state={{ from: location }}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
               {movie.title}
             </Link>
           </li>
@@ -17,8 +17,8 @@ export const TrendingMoviesList = ({ location, trendingMovies }) => {
   );
 };
 
-TrendingMoviesList.propTypes = {
-  trendingMovies: PropTypes.arrayOf(
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,

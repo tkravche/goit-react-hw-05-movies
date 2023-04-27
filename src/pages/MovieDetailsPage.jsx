@@ -41,10 +41,10 @@ const MovieDetails = () => {
 
       <section>
         <p>Additional information </p>
-        <Link to={`cast`} state={location.state}>
+        <Link to="cast" state={location.state}>
           <h4>Cast</h4>{' '}
         </Link>
-        <Link to={`reviews`} state={location.state}>
+        <Link to="reviews" state={location.state}>
           <h4>Reviews</h4>{' '}
         </Link>
         <Outlet />
